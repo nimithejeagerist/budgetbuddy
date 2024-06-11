@@ -54,22 +54,6 @@
 
    Open your web browser and navigate to `http://127.0.0.1:5000`.
 
-## Project Structure
-
-\`\`\`
-budgetbuddy/
-├── app.py
-├── templates/
-│   ├── index.html
-│   └── visualize.html
-├── static/
-│   ├── styles.css
-│   └── script.js
-├── uploads/
-│   └── finance_data.csv
-└── README.md
-\`\`\`
-
 ### Key Files
 
 - **app.py:** The main Flask application file that handles routes and data processing.
