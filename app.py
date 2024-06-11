@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.use('Agg')  # Use the Agg backend for rendering plots
+
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import os
@@ -11,7 +14,7 @@ os.makedirs("uploads", exist_ok=True)
 # Define the data structure for expenses and income
 data = {'Category': [], 'Amount': [], 'Type': []}
 
-# function to save data to the CSV
+# Function to save data to CSV
 def save_data():
     df = pd.DataFrame(data)
     df.to_csv('uploads/finance_data.csv', index=False)
@@ -28,8 +31,8 @@ def add():
 
     for category, amount, type_ in zip(categories, amounts, types):
         data['Category'].append(category)
-        data['Amount'].append(amount)
-        data['Type'].append(type)
+        data['Amount'].append(float(amount))
+        data['Type'].append(type_)
     save_data()
     return redirect(url_for('index'))
 
@@ -38,7 +41,7 @@ def visualize():
     df = pd.read_csv('uploads/finance_data.csv')
     df.groupby('Category')['Amount'].sum().plot(kind='bar')
     plt.savefig('static/expense_chart.png')
-    plt.close() # Close to free memory
+    plt.close()  # Close to free memory
     return render_template('visualize.html')
 
 if __name__ == "__main__":

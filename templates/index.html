@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Finance Tracker</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -12,49 +13,49 @@
         </div>
         <div class="transaction-form">
             <form action="/add" method="post">
-            <table id="transaction-table">
-                <thead>
-                    <tr class="header-row">
-                        <th>Category</th>
-                        <th>Amount</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="category[]" placeholder="Enter Category" required></td>
-                        <td><input type="number" name="amount[]" placeholder="Enter Amount" step="0.01" required></td>
-                        <td>
-                            <select name="type[]" required>
-                                <option value="" disabled selected>Placeholder</option>
-                                <option value="Expense">Expense</option>
-                                <option value="Income">Income</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="category[]" placeholder="Enter Category" required></td>
-                        <td><input type="number" name="amount[]" placeholder="Enter Amount" step="0.01" required></td>
-                        <td>
-                            <select name="type[]" required>
-                                <option value="" disabled selected>Placeholder</option>
-                                <option value="Expense">Expense</option>
-                                <option value="Income">Income</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button">Add New Row</button>
+                <table id="transaction-table">
+                    <thead>
+                        <tr class="header-row">
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="data-row">
+                            <td><input type="text" name="category[]" placeholder="Enter Category" required></td>
+                            <td><input type="number" name="amount[]" placeholder="Enter Amount" step="0.01" required></td>
+                            <td>
+                                <select name="type[]" required>
+                                    <option value="" disabled selected>Placeholder</option>
+                                    <option value="Expense">Expense</option>
+                                    <option value="Income">Income</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="data-row">
+                            <td><input type="text" name="category[]" placeholder="Enter Category" required></td>
+                            <td><input type="number" name="amount[]" placeholder="Enter Amount" step="0.01" required></td>
+                            <td>
+                                <select name="type[]" required>
+                                    <option value="" disabled selected>Placeholder</option>
+                                    <option value="Expense">Expense</option>
+                                    <option value="Income">Income</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" id="addRowButton">Add New Row</button>
+                <button type="button" id="removeRowButton">Remove Last Row</button>
+                <div class="buttons">
+                    <button type="submit">Calculate</button>
+                </div>
+            </form>
             <div class="buttons">
-                <button type="submit">Calculate</button>
-                <form action="/visualize" method="get">
-                    <button type="submit">Visualize</button>
-                </form>
+                <button onclick="window.location.href='/visualize'" class="button">Visualize</button>
             </div>
-        </form>
         </div>
-        
     </div>
 </body>
 </html>
